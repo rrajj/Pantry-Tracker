@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { fire_base_config } from "@/firebase";
 
 const inter = Inter({ subsets: ["latin"] });
 
