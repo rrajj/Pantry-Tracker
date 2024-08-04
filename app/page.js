@@ -26,7 +26,8 @@ export default function Home() {
   }
 
   const addItem = async(item) => {
-    const docRef = doc(collection(fireStore, 'pantry'), item)
+    const item_ = item.toLowerCase()
+    const docRef = doc(collection(fireStore, 'pantry'), item_)
     const docSnap = await getDoc(docRef)
 
     if (docSnap.exists()) {
@@ -40,7 +41,8 @@ export default function Home() {
   }
 
   const removeItem = async(item) => {
-    const docRef = doc(collection(fireStore, 'pantry'), item)
+    const item_ = item.toLowerCase()
+    const docRef = doc(collection(fireStore, 'pantry'), item_)
     const docSnap = await getDoc(docRef)
 
     if (docSnap.exists()) {
@@ -166,6 +168,13 @@ export default function Home() {
               <Typography variant="h3" color="#333" textAlign={"center"}>
                 {quantity}
               </Typography>
+              <Button variant="contained"
+                onClick={()=> {
+                  addItem(name)
+                }}
+              >
+                Add
+              </Button>
               <Button variant="contained"
                 onClick={()=> {
                   removeItem(name)
